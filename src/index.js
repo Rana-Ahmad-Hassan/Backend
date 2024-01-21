@@ -7,7 +7,7 @@ dotenv.config()
 
 connection()
 .then(()=>{
-    app.listen(process.env.PORT,()=>{
+    app.listen(process.env.PORT || 3000,()=>{
         console.log(`The app is listen on the port ${process.env.PORT}`);
     })
 }).catch((error)=>{
