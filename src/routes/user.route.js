@@ -7,14 +7,13 @@ const router=Router()
 router.route("/reg").post(
     uploadFile.fields([
         {
-            name:"avatar",
+            name:"coverImage",
             maxCount:1
         },
         {
-            name:"coverImage",
+            name:"image",
             maxCount:1
         }
-
     ]),
     registerUser)
 

@@ -1,25 +1,31 @@
 import { v2 as cloudinary } from 'cloudinary';
-import fs from "fs"
+import fs from 'fs';
 
 cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET,
+    cloud_name: 'dkvebyr7b',
+    api_key: '497653187961171',
+    api_secret: 'z8GaE2TH4Vf5HM3t5G2UUO_yHuk'
 });
-console.log(process.env.API_SECRET)
 
-const fileUploadCloudinary = async (file) => {
+
+
+const cloudUpload = async (file) => {
     try {
-        if (!file) return console.log("Files are required")
-        const response = await cloudinary.uploader.upload(file, {
-            resource_type: "auto"
-        })
-        console.log("File is uploaded successfully", response.url)
-        return response;
-    } catch (error) {
-        fs.unlinkSync(file)
-        return null;
-    }
-}
+        if (!file) {
+            console.error('Files are required');
+            return null;
+        }
 
-export default fileUploadCloudinary
+        const response = await cloudinary.uploader.upload(file);
+
+        console.log('File is uploaded successfully', response.url);
+
+        return response.url;
+    } catch (error) {
+        console.error('Error uploading to Cloudinary:', error.message);
+        fs.unlinkSync(file);
+        throw new Error('Error uploading to Cloudinary');
+    }
+};
+
+export default cloudUpload
