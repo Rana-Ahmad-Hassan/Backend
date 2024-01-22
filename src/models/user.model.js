@@ -24,11 +24,11 @@ const userSchema = new Schema({
         trim: true,
         index: true,
     },
-    avater: {
+    avatar: {
         type: String,
         required: true,
     },
-    coveredImage: {
+    coverImage: {
         type: String,
     },
     watchHistory: [

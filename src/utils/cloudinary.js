@@ -8,9 +8,9 @@ cloudinary.config({
 });
 console.log(process.env.API_SECRET)
 
-const fileUpload = async (file) => {
+const fileUploadCloudinary = async (file) => {
     try {
-        if (!file) return null
+        if (!file) return console.log("Files are required")
         const response = await cloudinary.uploader.upload(file, {
             resource_type: "auto"
         })
@@ -22,4 +22,4 @@ const fileUpload = async (file) => {
     }
 }
 
-export default fileUpload
+export default fileUploadCloudinary
