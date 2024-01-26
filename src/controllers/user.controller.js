@@ -110,7 +110,7 @@ const logInUser = AsyncHandler(async (req, res) => {
             new ApiResponse(
                 200,
                 {
-                    user: logInUser, accessToken, refreshToken
+                    user: loggedInUser, accessToken, refreshToken
                 },
                 "user Logged in successfully"
             )
@@ -119,4 +119,4 @@ const logInUser = AsyncHandler(async (req, res) => {
 
 })
 
-export { registerUser };
+export { registerUser, logInUser };
